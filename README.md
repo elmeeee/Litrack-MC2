@@ -77,7 +77,7 @@ Clean, modern UI built with UIKit, providing a seamless user experience for wast
 
 ### Application Architecture Diagram
 
-![Architecture Diagram](https://raw.githubusercontent.com/elmeeee/Litrack-MC2/main/docs/architecture_diagram.png)
+![Architecture Diagram](./docs/architecture_diagram.png)
 
 *The app follows the MVC (Model-View-Controller) pattern with clear separation of concerns across presentation, business logic, and data layers.*
 
@@ -108,7 +108,7 @@ Clean, modern UI built with UIKit, providing a seamless user experience for wast
 
 ### User Journey Flow
 
-![Feature Flow](https://raw.githubusercontent.com/elmeeee/Litrack-MC2/main/docs/feature_flow_diagram.png)
+![Feature Flow](./docs/feature_flow_diagram.png)
 
 *From launch to analytics: A complete user journey through the Litrack application.*
 
@@ -130,7 +130,7 @@ Clean, modern UI built with UIKit, providing a seamless user experience for wast
 
 ### Technology Stack Visualization
 
-![Tech Stack](https://raw.githubusercontent.com/elmeeee/Litrack-MC2/main/docs/tech_stack_diagram.png)
+![Tech Stack](./docs/tech_stack_diagram.png)
 
 *A comprehensive view of all technologies powering Litrack.*
 
@@ -323,7 +323,7 @@ Currently, there are no known issues. If you encounter any problems, please [ope
 <table>
 <tr>
 <td align="center" width="20%">
-<img src="https://github.com/elmysf.png" width="100px;" alt="Elmysf"/><br />
+<img src="https://github.com/elmeeee.png" width="100px;" alt="Elmysf"/><br />
 <sub><b>Elmee</b></sub><br />
 <i>Developer | Python | CoreML</i><br />
 <a href="https://github.com/elmeeee">💻</a>
