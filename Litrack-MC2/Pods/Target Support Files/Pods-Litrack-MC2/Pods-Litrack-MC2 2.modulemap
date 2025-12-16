@@ -1,6 +1,0 @@
-framework module Pods_Litrack_MC2 {
-  umbrella header "Pods-Litrack-MC2-umbrella.h"
-
-  export *
-  module * { export * }
-}

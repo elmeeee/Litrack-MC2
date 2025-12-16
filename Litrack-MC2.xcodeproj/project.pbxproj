@@ -3,22 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360394012EF0F97500225FE5 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393DE2EF0F97500225FE5 /* DataController.swift */; };
+		360394022EF0F97500225FE5 /* ClassificationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393F42EF0F97500225FE5 /* ClassificationResult.swift */; };
+		360394032EF0F97500225FE5 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393F92EF0F97500225FE5 /* AnalyticsView.swift */; };
+		360394062EF0F97500225FE5 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393FC2EF0F97500225FE5 /* HistoryView.swift */; };
+		360394092EF0F97500225FE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393DB2EF0F97500225FE5 /* ContentView.swift */; };
+		3603940A2EF0F97500225FE5 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393EF2EF0F97500225FE5 /* MainTabView.swift */; };
+		3603940B2EF0F97500225FE5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393FE2EF0F97500225FE5 /* SettingsView.swift */; };
+		3603940D2EF0F97500225FE5 /* LitrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393DC2EF0F97500225FE5 /* LitrackApp.swift */; };
+		3603940E2EF0F97500225FE5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393FA2EF0F97500225FE5 /* CameraView.swift */; };
+		360394102EF0F97500225FE5 /* Litrack_MC2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 360393E72EF0F97500225FE5 /* Litrack_MC2.xcdatamodeld */; };
+		360394122EF0F97500225FE5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393F22EF0F97500225FE5 /* Color+Extensions.swift */; };
+		360394132EF0F97500225FE5 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393EE2EF0F97500225FE5 /* CustomTabBar.swift */; };
+		360394142EF0F97500225FE5 /* WasteEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393F62EF0F97500225FE5 /* WasteEntry+CoreDataProperties.swift */; };
+		360394162EF0F97500225FE5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393DA2EF0F97500225FE5 /* AppState.swift */; };
+		360394172EF0F97500225FE5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393FD2EF0F97500225FE5 /* HomeView.swift */; };
+		360394182EF0F97500225FE5 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393F02EF0F97500225FE5 /* SplashView.swift */; };
+		360394192EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393F52EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift */; };
+		364D616A2EF111A9003E7A80 /* LittrackClasification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 364D61692EF111A9003E7A80 /* LittrackClasification.mlmodel */; };
+		364D616C2EF1133D003E7A80 /* MiniGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D616B2EF1133D003E7A80 /* MiniGameView.swift */; };
 		CBE7A09124744FD300868A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A09024744FD300868A22 /* AppDelegate.swift */; };
-		CBE7A09324744FD300868A22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A09224744FD300868A22 /* SceneDelegate.swift */; };
-		CBE7A09524744FD300868A22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A09424744FD300868A22 /* ViewController.swift */; };
-		CBE7A09824744FD300868A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE7A09624744FD300868A22 /* Main.storyboard */; };
-		CBE7A09B24744FD300868A22 /* Litrack_MC2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A09924744FD300868A22 /* Litrack_MC2.xcdatamodeld */; };
 		CBE7A09D24744FD500868A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE7A09C24744FD500868A22 /* Assets.xcassets */; };
-		CBE7A0A024744FD500868A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE7A09E24744FD500868A22 /* LaunchScreen.storyboard */; };
 		CBE7A0AB24744FD500868A22 /* Litrack_MC2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A0AA24744FD500868A22 /* Litrack_MC2Tests.swift */; };
 		CBE7A0B624744FD500868A22 /* Litrack_MC2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A0B524744FD500868A22 /* Litrack_MC2UITests.swift */; };
-		CC6EE1080731BE59DD06D3E5 /* Pods_Litrack_MC2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BAAD205670E2DB73033AA1 /* Pods_Litrack_MC2Tests.framework */; };
-		E24CBE004A48938CCA8F0936 /* Pods_Litrack_MC2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0B1849CAC42DE80538D835 /* Pods_Litrack_MC2.framework */; };
-		F48058ED025213F094BD9194 /* Pods_Litrack_MC2_Litrack_MC2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79ADACCEB8A1764428091392 /* Pods_Litrack_MC2_Litrack_MC2UITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,22 +50,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22EAA742B16D84A339E26948 /* Pods-Litrack-MC2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Litrack-MC2Tests.release.xcconfig"; path = "Target Support Files/Pods-Litrack-MC2Tests/Pods-Litrack-MC2Tests.release.xcconfig"; sourceTree = "<group>"; };
-		2680297C27D5B6D12BA0E2B8 /* Pods-Litrack-MC2-Litrack-MC2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Litrack-MC2-Litrack-MC2UITests.release.xcconfig"; path = "Target Support Files/Pods-Litrack-MC2-Litrack-MC2UITests/Pods-Litrack-MC2-Litrack-MC2UITests.release.xcconfig"; sourceTree = "<group>"; };
-		29F08F2B8B94EE987D3A1536 /* Pods-Litrack-MC2-Litrack-MC2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Litrack-MC2-Litrack-MC2UITests.debug.xcconfig"; path = "Target Support Files/Pods-Litrack-MC2-Litrack-MC2UITests/Pods-Litrack-MC2-Litrack-MC2UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		4F17B7754A1405DC271E9EB7 /* Pods-Litrack-MC2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Litrack-MC2Tests.debug.xcconfig"; path = "Target Support Files/Pods-Litrack-MC2Tests/Pods-Litrack-MC2Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		58DA90527750189758DD4CF9 /* Pods-Litrack-MC2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Litrack-MC2.debug.xcconfig"; path = "Target Support Files/Pods-Litrack-MC2/Pods-Litrack-MC2.debug.xcconfig"; sourceTree = "<group>"; };
-		63BAAD205670E2DB73033AA1 /* Pods_Litrack_MC2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Litrack_MC2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79ADACCEB8A1764428091392 /* Pods_Litrack_MC2_Litrack_MC2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Litrack_MC2_Litrack_MC2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B30C443B49991530735A64DC /* Pods-Litrack-MC2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Litrack-MC2.release.xcconfig"; path = "Target Support Files/Pods-Litrack-MC2/Pods-Litrack-MC2.release.xcconfig"; sourceTree = "<group>"; };
+		360393DA2EF0F97500225FE5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		360393DB2EF0F97500225FE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		360393DC2EF0F97500225FE5 /* LitrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LitrackApp.swift; sourceTree = "<group>"; };
+		360393DE2EF0F97500225FE5 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		360393EE2EF0F97500225FE5 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		360393EF2EF0F97500225FE5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		360393F02EF0F97500225FE5 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		360393F22EF0F97500225FE5 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		360393F42EF0F97500225FE5 /* ClassificationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationResult.swift; sourceTree = "<group>"; };
+		360393F52EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WasteEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		360393F62EF0F97500225FE5 /* WasteEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WasteEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		360393F92EF0F97500225FE5 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		360393FA2EF0F97500225FE5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		360393FC2EF0F97500225FE5 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		360393FD2EF0F97500225FE5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		360393FE2EF0F97500225FE5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		360394002EF0F97500225FE5 /* Litrack_MC2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Litrack_MC2.xcdatamodel; sourceTree = "<group>"; };
+		364D61692EF111A9003E7A80 /* LittrackClasification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LittrackClasification.mlmodel; sourceTree = "<group>"; };
+		364D616B2EF1133D003E7A80 /* MiniGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameView.swift; sourceTree = "<group>"; };
 		CBE7A08D24744FD300868A22 /* Litrack-MC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Litrack-MC2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE7A09024744FD300868A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CBE7A09224744FD300868A22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CBE7A09424744FD300868A22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CBE7A09724744FD300868A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CBE7A09A24744FD300868A22 /* Litrack_MC2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Litrack_MC2.xcdatamodel; sourceTree = "<group>"; };
 		CBE7A09C24744FD500868A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CBE7A09F24744FD500868A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBE7A0A124744FD500868A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE7A0A624744FD500868A22 /* Litrack-MC2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Litrack-MC2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE7A0AA24744FD500868A22 /* Litrack_MC2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Litrack_MC2Tests.swift; sourceTree = "<group>"; };
@@ -62,7 +79,6 @@
 		CBE7A0B124744FD500868A22 /* Litrack-MC2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Litrack-MC2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE7A0B524744FD500868A22 /* Litrack_MC2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Litrack_MC2UITests.swift; sourceTree = "<group>"; };
 		CBE7A0B724744FD500868A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD0B1849CAC42DE80538D835 /* Pods_Litrack_MC2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Litrack_MC2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E24CBE004A48938CCA8F0936 /* Pods_Litrack_MC2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC6EE1080731BE59DD06D3E5 /* Pods_Litrack_MC2Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,34 +100,88 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F48058ED025213F094BD9194 /* Pods_Litrack_MC2_Litrack_MC2UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1ADB58752453BA90C8422CAE /* Frameworks */ = {
+		360393DD2EF0F97500225FE5 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				FD0B1849CAC42DE80538D835 /* Pods_Litrack_MC2.framework */,
-				79ADACCEB8A1764428091392 /* Pods_Litrack_MC2_Litrack_MC2UITests.framework */,
-				63BAAD205670E2DB73033AA1 /* Pods_Litrack_MC2Tests.framework */,
+				360393DA2EF0F97500225FE5 /* AppState.swift */,
+				360393DB2EF0F97500225FE5 /* ContentView.swift */,
+				360393DC2EF0F97500225FE5 /* LitrackApp.swift */,
 			);
-			name = Frameworks;
+			path = App;
 			sourceTree = "<group>";
 		};
-		678F267E52DC719E2285CC4D /* Pods */ = {
+		360393DF2EF0F97500225FE5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				58DA90527750189758DD4CF9 /* Pods-Litrack-MC2.debug.xcconfig */,
-				B30C443B49991530735A64DC /* Pods-Litrack-MC2.release.xcconfig */,
-				29F08F2B8B94EE987D3A1536 /* Pods-Litrack-MC2-Litrack-MC2UITests.debug.xcconfig */,
-				2680297C27D5B6D12BA0E2B8 /* Pods-Litrack-MC2-Litrack-MC2UITests.release.xcconfig */,
-				4F17B7754A1405DC271E9EB7 /* Pods-Litrack-MC2Tests.debug.xcconfig */,
-				22EAA742B16D84A339E26948 /* Pods-Litrack-MC2Tests.release.xcconfig */,
+				360393DE2EF0F97500225FE5 /* DataController.swift */,
 			);
-			path = Pods;
+			path = Data;
+			sourceTree = "<group>";
+		};
+		360393E02EF0F97500225FE5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				360393DD2EF0F97500225FE5 /* App */,
+				360393DF2EF0F97500225FE5 /* Data */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		360393F12EF0F97500225FE5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				360393EE2EF0F97500225FE5 /* CustomTabBar.swift */,
+				360393EF2EF0F97500225FE5 /* MainTabView.swift */,
+				360393F02EF0F97500225FE5 /* SplashView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		360393F32EF0F97500225FE5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				360393F22EF0F97500225FE5 /* Color+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		360393F72EF0F97500225FE5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				360393F42EF0F97500225FE5 /* ClassificationResult.swift */,
+				360393F52EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift */,
+				360393F62EF0F97500225FE5 /* WasteEntry+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		360393F82EF0F97500225FE5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				360393F12EF0F97500225FE5 /* Components */,
+				360393F32EF0F97500225FE5 /* Extensions */,
+				360393F72EF0F97500225FE5 /* Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		360393FF2EF0F97500225FE5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				364D616B2EF1133D003E7A80 /* MiniGameView.swift */,
+				360393F92EF0F97500225FE5 /* AnalyticsView.swift */,
+				360393FA2EF0F97500225FE5 /* CameraView.swift */,
+				360393FC2EF0F97500225FE5 /* HistoryView.swift */,
+				360393FD2EF0F97500225FE5 /* HomeView.swift */,
+				360393FE2EF0F97500225FE5 /* SettingsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CBE7A08424744FD200868A22 = {
@@ -123,8 +191,6 @@
 				CBE7A0A924744FD500868A22 /* Litrack-MC2Tests */,
 				CBE7A0B424744FD500868A22 /* Litrack-MC2UITests */,
 				CBE7A08E24744FD300868A22 /* Products */,
-				678F267E52DC719E2285CC4D /* Pods */,
-				1ADB58752453BA90C8422CAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,14 +207,14 @@
 		CBE7A08F24744FD300868A22 /* Litrack-MC2 */ = {
 			isa = PBXGroup;
 			children = (
+				360393E02EF0F97500225FE5 /* Core */,
+				360393E72EF0F97500225FE5 /* Litrack_MC2.xcdatamodeld */,
+				360393F82EF0F97500225FE5 /* Shared */,
+				360393FF2EF0F97500225FE5 /* Views */,
 				CBE7A09024744FD300868A22 /* AppDelegate.swift */,
-				CBE7A09224744FD300868A22 /* SceneDelegate.swift */,
-				CBE7A09424744FD300868A22 /* ViewController.swift */,
-				CBE7A09624744FD300868A22 /* Main.storyboard */,
 				CBE7A09C24744FD500868A22 /* Assets.xcassets */,
-				CBE7A09E24744FD500868A22 /* LaunchScreen.storyboard */,
 				CBE7A0A124744FD500868A22 /* Info.plist */,
-				CBE7A09924744FD300868A22 /* Litrack_MC2.xcdatamodeld */,
+				364D61692EF111A9003E7A80 /* LittrackClasification.mlmodel */,
 			);
 			path = "Litrack-MC2";
 			sourceTree = "<group>";
@@ -178,11 +244,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBE7A0BA24744FD500868A22 /* Build configuration list for PBXNativeTarget "Litrack-MC2" */;
 			buildPhases = (
-				AEEE257021B9B0C0F00E5F14 /* [CP] Check Pods Manifest.lock */,
 				CBE7A08924744FD300868A22 /* Sources */,
 				CBE7A08A24744FD300868A22 /* Frameworks */,
 				CBE7A08B24744FD300868A22 /* Resources */,
-				21DD642359D677AD952974AB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,7 +261,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBE7A0BD24744FD500868A22 /* Build configuration list for PBXNativeTarget "Litrack-MC2Tests" */;
 			buildPhases = (
-				94339120EBC2AD44976A9A5D /* [CP] Check Pods Manifest.lock */,
 				CBE7A0A224744FD500868A22 /* Sources */,
 				CBE7A0A324744FD500868A22 /* Frameworks */,
 				CBE7A0A424744FD500868A22 /* Resources */,
@@ -216,11 +279,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBE7A0C024744FD500868A22 /* Build configuration list for PBXNativeTarget "Litrack-MC2UITests" */;
 			buildPhases = (
-				935BF083127D3B63060C56C2 /* [CP] Check Pods Manifest.lock */,
 				CBE7A0AD24744FD500868A22 /* Sources */,
 				CBE7A0AE24744FD500868A22 /* Frameworks */,
 				CBE7A0AF24744FD500868A22 /* Resources */,
-				1769B2DE6C18F0FF27B067E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -238,8 +299,9 @@
 		CBE7A08524744FD300868A22 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 2620;
 				ORGANIZATIONNAME = "Karina Widyastuti";
 				TargetAttributes = {
 					CBE7A08C24744FD300868A22 = {
@@ -280,9 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBE7A0A024744FD500868A22 /* LaunchScreen.storyboard in Resources */,
 				CBE7A09D24744FD500868A22 /* Assets.xcassets in Resources */,
-				CBE7A09824744FD300868A22 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,118 +362,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		1769B2DE6C18F0FF27B067E7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Litrack-MC2-Litrack-MC2UITests/Pods-Litrack-MC2-Litrack-MC2UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Litrack-MC2-Litrack-MC2UITests/Pods-Litrack-MC2-Litrack-MC2UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Litrack-MC2-Litrack-MC2UITests/Pods-Litrack-MC2-Litrack-MC2UITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		21DD642359D677AD952974AB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Litrack-MC2/Pods-Litrack-MC2-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Litrack-MC2/Pods-Litrack-MC2-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Litrack-MC2/Pods-Litrack-MC2-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		935BF083127D3B63060C56C2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Litrack-MC2-Litrack-MC2UITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		94339120EBC2AD44976A9A5D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Litrack-MC2Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AEEE257021B9B0C0F00E5F14 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Litrack-MC2-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CBE7A08924744FD300868A22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBE7A09524744FD300868A22 /* ViewController.swift in Sources */,
 				CBE7A09124744FD300868A22 /* AppDelegate.swift in Sources */,
-				CBE7A09324744FD300868A22 /* SceneDelegate.swift in Sources */,
-				CBE7A09B24744FD300868A22 /* Litrack_MC2.xcdatamodeld in Sources */,
+				360394012EF0F97500225FE5 /* DataController.swift in Sources */,
+				360394022EF0F97500225FE5 /* ClassificationResult.swift in Sources */,
+				360394032EF0F97500225FE5 /* AnalyticsView.swift in Sources */,
+				364D616A2EF111A9003E7A80 /* LittrackClasification.mlmodel in Sources */,
+				360394062EF0F97500225FE5 /* HistoryView.swift in Sources */,
+				360394092EF0F97500225FE5 /* ContentView.swift in Sources */,
+				3603940A2EF0F97500225FE5 /* MainTabView.swift in Sources */,
+				3603940B2EF0F97500225FE5 /* SettingsView.swift in Sources */,
+				3603940D2EF0F97500225FE5 /* LitrackApp.swift in Sources */,
+				3603940E2EF0F97500225FE5 /* CameraView.swift in Sources */,
+				360394102EF0F97500225FE5 /* Litrack_MC2.xcdatamodeld in Sources */,
+				360394122EF0F97500225FE5 /* Color+Extensions.swift in Sources */,
+				360394132EF0F97500225FE5 /* CustomTabBar.swift in Sources */,
+				360394142EF0F97500225FE5 /* WasteEntry+CoreDataProperties.swift in Sources */,
+				360394162EF0F97500225FE5 /* AppState.swift in Sources */,
+				360394172EF0F97500225FE5 /* HomeView.swift in Sources */,
+				360394182EF0F97500225FE5 /* SplashView.swift in Sources */,
+				360394192EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift in Sources */,
+				364D616C2EF1133D003E7A80 /* MiniGameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,25 +421,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		CBE7A09624744FD300868A22 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CBE7A09724744FD300868A22 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CBE7A09E24744FD500868A22 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CBE7A09F24744FD500868A22 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		CBE7A0B824744FD500868A22 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -494,6 +448,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -502,8 +457,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NF3JRRP69D;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -518,11 +475,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -554,6 +512,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -562,8 +521,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NF3JRRP69D;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -572,10 +533,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -584,18 +546,16 @@
 		};
 		CBE7A0BB24744FD500868A22 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 58DA90527750189758DD4CF9 /* Pods-Litrack-MC2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XV6Q4LNRD5;
 				INFOPLIST_FILE = "Litrack-MC2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "www.infinitelearning.id.Litrack-MC2";
+				PRODUCT_BUNDLE_IDENTIFIER = co.kamy.Litrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -604,18 +564,16 @@
 		};
 		CBE7A0BC24744FD500868A22 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B30C443B49991530735A64DC /* Pods-Litrack-MC2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XV6Q4LNRD5;
 				INFOPLIST_FILE = "Litrack-MC2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "www.infinitelearning.id.Litrack-MC2";
+				PRODUCT_BUNDLE_IDENTIFIER = co.kamy.Litrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -624,20 +582,17 @@
 		};
 		CBE7A0BE24744FD500868A22 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F17B7754A1405DC271E9EB7 /* Pods-Litrack-MC2Tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XV6Q4LNRD5;
 				INFOPLIST_FILE = "Litrack-MC2Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "www.infinitelearning.id.Litrack-MC2Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = co.kamy.LitrackTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -647,20 +602,17 @@
 		};
 		CBE7A0BF24744FD500868A22 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22EAA742B16D84A339E26948 /* Pods-Litrack-MC2Tests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XV6Q4LNRD5;
 				INFOPLIST_FILE = "Litrack-MC2Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "www.infinitelearning.id.Litrack-MC2Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = co.kamy.LitrackTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -670,18 +622,15 @@
 		};
 		CBE7A0C124744FD500868A22 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29F08F2B8B94EE987D3A1536 /* Pods-Litrack-MC2-Litrack-MC2UITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XV6Q4LNRD5;
 				INFOPLIST_FILE = "Litrack-MC2UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "www.infinitelearning.id.Litrack-MC2UITests";
+				PRODUCT_BUNDLE_IDENTIFIER = co.kamy.LitrackUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -691,18 +640,15 @@
 		};
 		CBE7A0C224744FD500868A22 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2680297C27D5B6D12BA0E2B8 /* Pods-Litrack-MC2-Litrack-MC2UITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XV6Q4LNRD5;
 				INFOPLIST_FILE = "Litrack-MC2UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "www.infinitelearning.id.Litrack-MC2UITests";
+				PRODUCT_BUNDLE_IDENTIFIER = co.kamy.LitrackUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -752,12 +698,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CBE7A09924744FD300868A22 /* Litrack_MC2.xcdatamodeld */ = {
+		360393E72EF0F97500225FE5 /* Litrack_MC2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CBE7A09A24744FD300868A22 /* Litrack_MC2.xcdatamodel */,
+				360394002EF0F97500225FE5 /* Litrack_MC2.xcdatamodel */,
 			);
-			currentVersion = CBE7A09A24744FD300868A22 /* Litrack_MC2.xcdatamodel */;
+			currentVersion = 360394002EF0F97500225FE5 /* Litrack_MC2.xcdatamodel */;
 			path = Litrack_MC2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
