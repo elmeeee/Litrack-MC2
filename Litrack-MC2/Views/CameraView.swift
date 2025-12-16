@@ -242,7 +242,9 @@ class CameraOverlayScene: SKScene {
         particle.strokeColor = .clear
         
         let emitter = SKEmitterNode()
-        emitter.particleTexture = view?.texture(from: particle)
+        if let view = view {
+            emitter.particleTexture = view.texture(from: particle)
+        }
         emitter.particleBirthRate = 5
         emitter.particleLifetime = 3.0
         emitter.particlePositionRange = CGVector(dx: size.width, dy: size.height)
@@ -449,7 +451,7 @@ struct SaveClassificationView: View {
         entry.confidence = result.confidence
         entry.timestamp = Date()
         
-        if let filename = saveImageToDocuments(result.image) {
+        if let image = result.image, let filename = saveImageToDocuments(image) {
             entry.imageName = filename
         }
         
