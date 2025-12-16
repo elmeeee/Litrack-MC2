@@ -24,9 +24,8 @@
 		360394172EF0F97500225FE5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393FD2EF0F97500225FE5 /* HomeView.swift */; };
 		360394182EF0F97500225FE5 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393F02EF0F97500225FE5 /* SplashView.swift */; };
 		360394192EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393F52EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift */; };
-		3690976C2EF0FE1A00F74A6D /* WasteClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3690976B2EF0FE1900F74A6D /* WasteClassifier.mlmodel */; };
+		364D616A2EF111A9003E7A80 /* LittrackClasification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 364D61692EF111A9003E7A80 /* LittrackClasification.mlmodel */; };
 		CBE7A09124744FD300868A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A09024744FD300868A22 /* AppDelegate.swift */; };
-
 		CBE7A09D24744FD500868A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE7A09C24744FD500868A22 /* Assets.xcassets */; };
 		CBE7A0AB24744FD500868A22 /* Litrack_MC2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A0AA24744FD500868A22 /* Litrack_MC2Tests.swift */; };
 		CBE7A0B624744FD500868A22 /* Litrack_MC2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A0B524744FD500868A22 /* Litrack_MC2UITests.swift */; };
@@ -67,10 +66,9 @@
 		360393FD2EF0F97500225FE5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		360393FE2EF0F97500225FE5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		360394002EF0F97500225FE5 /* Litrack_MC2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Litrack_MC2.xcdatamodel; sourceTree = "<group>"; };
-		3690976B2EF0FE1900F74A6D /* WasteClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = WasteClassifier.mlmodel; sourceTree = "<group>"; };
+		364D61692EF111A9003E7A80 /* LittrackClasification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LittrackClasification.mlmodel; sourceTree = "<group>"; };
 		CBE7A08D24744FD300868A22 /* Litrack-MC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Litrack-MC2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE7A09024744FD300868A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CBE7A09A24744FD300868A22 /* Litrack_MC2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Litrack_MC2.xcdatamodel; sourceTree = "<group>"; };
 		CBE7A09C24744FD500868A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBE7A0A124744FD500868A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE7A0A624744FD500868A22 /* Litrack-MC2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Litrack-MC2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,8 +211,7 @@
 				CBE7A09024744FD300868A22 /* AppDelegate.swift */,
 				CBE7A09C24744FD500868A22 /* Assets.xcassets */,
 				CBE7A0A124744FD500868A22 /* Info.plist */,
-
-				3690976B2EF0FE1900F74A6D /* WasteClassifier.mlmodel */,
+				364D61692EF111A9003E7A80 /* LittrackClasification.mlmodel */,
 			);
 			path = "Litrack-MC2";
 			sourceTree = "<group>";
@@ -371,6 +368,7 @@
 				360394012EF0F97500225FE5 /* DataController.swift in Sources */,
 				360394022EF0F97500225FE5 /* ClassificationResult.swift in Sources */,
 				360394032EF0F97500225FE5 /* AnalyticsView.swift in Sources */,
+				364D616A2EF111A9003E7A80 /* LittrackClasification.mlmodel in Sources */,
 				360394062EF0F97500225FE5 /* HistoryView.swift in Sources */,
 				360394092EF0F97500225FE5 /* ContentView.swift in Sources */,
 				3603940A2EF0F97500225FE5 /* MainTabView.swift in Sources */,
@@ -379,14 +377,12 @@
 				3603940E2EF0F97500225FE5 /* CameraView.swift in Sources */,
 				360394102EF0F97500225FE5 /* Litrack_MC2.xcdatamodeld in Sources */,
 				360394122EF0F97500225FE5 /* Color+Extensions.swift in Sources */,
-				3690976C2EF0FE1A00F74A6D /* WasteClassifier.mlmodel in Sources */,
 				360394132EF0F97500225FE5 /* CustomTabBar.swift in Sources */,
 				360394142EF0F97500225FE5 /* WasteEntry+CoreDataProperties.swift in Sources */,
 				360394162EF0F97500225FE5 /* AppState.swift in Sources */,
 				360394172EF0F97500225FE5 /* HomeView.swift in Sources */,
 				360394182EF0F97500225FE5 /* SplashView.swift in Sources */,
 				360394192EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,7 +704,6 @@
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
-
 /* End XCVersionGroup section */
 	};
 	rootObject = CBE7A08524744FD300868A22 /* Project object */;

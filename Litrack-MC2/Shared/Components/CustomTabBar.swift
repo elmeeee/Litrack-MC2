@@ -14,82 +14,130 @@ struct CustomTabBar: View {
     @Namespace private var animation
     
     let tabs = [
-        (icon: "house.fill", title: "Home"),
-        (icon: "clock.fill", title: "History"),
-        (icon: "chart.bar.fill", title: "Analytics"),
-        (icon: "gearshape.fill", title: "Settings")
+        (tag: 0, icon: "house.fill", title: "Home"),
+        (tag: 1, icon: "clock.fill", title: "History"),
+        (tag: 2, icon: "gamecontroller.fill", title: "Game"),
+        (tag: 3, icon: "gearshape.fill", title: "Settings")
     ]
     
     var body: some View {
-        HStack(spacing: 0) {
-            ForEach(0..<tabs.count, id: \.self) { index in
-                // Add Camera Button before the 3rd tab (index 2)
-                if index == 2 {
-                    Button {
-                        appState.showCamera = true
-                    } label: {
-                        ZStack {
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: 60, height: 60)
-                                .shadow(color: Color.white.opacity(0.2), radius: 10, x: 0, y: 5)
-                            
-                            Image(systemName: "camera.fill")
-                                .font(.system(size: 24, weight: .bold))
-                                .foregroundColor(.black)
-                        }
-                    }
-                    .offset(y: -20)
-                    .frame(maxWidth: .infinity)
+        VStack(spacing: 0) {
+            // Gradient Divider
+            Rectangle()
+                .fill(
+                    LinearGradient(
+                        colors: [.white.opacity(0.1), .white.opacity(0.3), .white.opacity(0.1)],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .frame(height: 1)
+            
+            HStack(spacing: 0) {
+                // First 2 Tabs
+                ForEach(tabs.prefix(2), id: \.tag) { tab in
+                    TabBarButton(
+                        icon: tab.icon,
+                        title: tab.title,
+                        tag: tab.tag,
+                        selectedTab: $selectedTab,
+                        animation: animation
+                    )
                 }
                 
-                // Tab Button
+                // Camera Button (Center)
                 Button {
-                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                        selectedTab = index
-                    }
+                    appState.showCamera = true
                 } label: {
-                    VStack(spacing: 4) {
-                        Image(systemName: tabs[index].icon)
-                            .font(.system(size: 20, weight: selectedTab == index ? .bold : .regular))
-                            .foregroundColor(selectedTab == index ? .white : .white.opacity(0.5))
+                    ZStack {
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .frame(width: 64, height: 64)
+                            .shadow(color: Color(hex: "38ef7d").opacity(0.4), radius: 10, x: 0, y: 5)
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                            )
                         
-                        Text(tabs[index].title)
-                            .font(.system(size: 10, weight: selectedTab == index ? .semibold : .regular))
-                            .foregroundColor(selectedTab == index ? .white : .white.opacity(0.5))
-                        
-                        if selectedTab == index {
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: 4, height: 4)
-                                .matchedGeometryEffect(id: "tab", in: animation)
-                        } else {
-                            Circle()
-                                .fill(Color.clear)
-                                .frame(width: 4, height: 4)
-                        }
+                        Image(systemName: "camera.fill")
+                            .font(.system(size: 28, weight: .bold))
+                            .foregroundColor(.white)
                     }
-                    .frame(maxWidth: .infinity)
+                }
+                .offset(y: -24)
+                .frame(width: 80)
+                
+                // Last 2 Tabs
+                ForEach(tabs.suffix(2), id: \.tag) { tab in
+                    TabBarButton(
+                        icon: tab.icon,
+                        title: tab.title,
+                        tag: tab.tag,
+                        selectedTab: $selectedTab,
+                        animation: animation
+                    )
                 }
             }
-        }
-        .padding(.vertical, 12)
-        .padding(.horizontal, 16)
-        .background(
-            ZStack {
-                RoundedRectangle(cornerRadius: 30)
-                    .fill(.thickMaterial)
-                
-                RoundedRectangle(cornerRadius: 30)
-                    .fill(Color(hex: "0F2027").opacity(0.8))
-            }
-            .overlay(
-                RoundedRectangle(cornerRadius: 30)
-                    .stroke(Color.white.opacity(0.2), lineWidth: 1)
+            .padding(.horizontal, 8)
+            .padding(.bottom, 20) // Safe Area padding handled manually or by system if not ignored
+            .padding(.top, 12)
+            .background(
+                Rectangle()
+                    .fill(.ultraThinMaterial)
+                    .overlay(
+                        Rectangle()
+                            .fill(Color(hex: "0F2027").opacity(0.6))
+                    )
+                    .ignoresSafeArea()
             )
-        )
-        .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 10)
-        .ignoresSafeArea(.keyboard)
+        }
+    }
+}
+
+struct TabBarButton: View {
+    let icon: String
+    let title: String
+    let tag: Int
+    @Binding var selectedTab: Int
+    var animation: Namespace.ID
+    
+    var isSelected: Bool {
+        selectedTab == tag
+    }
+    
+    var body: some View {
+        Button {
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                selectedTab = tag
+            }
+        } label: {
+            VStack(spacing: 6) {
+                ZStack {
+                    if isSelected {
+                        Circle()
+                            .fill(Color(hex: "38ef7d").opacity(0.2))
+                            .frame(width: 40, height: 40)
+                            .matchedGeometryEffect(id: "tab_bg", in: animation)
+                    }
+                    
+                    Image(systemName: icon)
+                        .font(.system(size: 22, weight: isSelected ? .bold : .regular))
+                        .foregroundColor(isSelected ? Color(hex: "38ef7d") : .white.opacity(0.6))
+                        .scaleEffect(isSelected ? 1.1 : 1.0)
+                }
+                
+                Text(title)
+                    .font(.system(size: 10, weight: isSelected ? .semibold : .medium))
+                    .foregroundColor(isSelected ? .white : .white.opacity(0.5))
+            }
+            .frame(maxWidth: .infinity)
+        }
     }
 }
 

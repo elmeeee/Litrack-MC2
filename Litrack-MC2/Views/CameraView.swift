@@ -157,18 +157,36 @@ struct ClassificationResultView: View {
     
     var iconName: String {
         switch result.type {
+        case "Paper": return "newspaper.fill"
+        case "Cardboard": return "box.truck.fill"
+        case "Biological": return "leaf.fill"
+        case "Metal": return "gear"
         case "Plastic": return "drop.fill"
-        case "Can": return "cylinder.fill"
-        case "Glass": return "wineglass.fill"
+        case "Green-glass": return "wineglass.fill"
+        case "Brown-glass": return "wineglass.fill"
+        case "White-glass": return "wineglass.fill"
+        case "Clothes": return "tshirt.fill"
+        case "Shoes": return "shoe.fill"
+        case "Batteries": return "battery.100.bolt"
+        case "Trash": return "trash.fill"
         default: return "cube.fill"
         }
     }
     
     var iconColor: [Color] {
         switch result.type {
+        case "Paper": return [Color.white, Color.gray]
+        case "Cardboard": return [Color(hex: "D2B48C"), Color(hex: "A0522D")]
+        case "Biological": return [Color(hex: "11998e"), Color(hex: "38ef7d")]
+        case "Metal": return [Color(hex: "bdc3c7"), Color(hex: "2c3e50")]
         case "Plastic": return [Color(hex: "667eea"), Color(hex: "764ba2")]
-        case "Can": return [Color(hex: "f093fb"), Color(hex: "f5576c")]
-        case "Glass": return [Color(hex: "4facfe"), Color(hex: "00f2fe")]
+        case "Green-glass": return [Color(hex: "56ab2f"), Color(hex: "a8e063")]
+        case "Brown-glass": return [Color(hex: "8D6E63"), Color(hex: "5D4037")]
+        case "White-glass": return [Color(hex: "E0F7FA"), Color(hex: "B2EBF2")]
+        case "Clothes": return [Color(hex: "ff9a9e"), Color(hex: "fecfef")]
+        case "Shoes": return [Color(hex: "29323c"), Color(hex: "485563")]
+        case "Batteries": return [Color(hex: "ff6a00"), Color(hex: "ee0979")]
+        case "Trash": return [Color(hex: "304352"), Color(hex: "d7d2cc")]
         default: return [Color(hex: "11998e"), Color(hex: "38ef7d")]
         }
     }
@@ -187,7 +205,7 @@ struct ClassificationResultView: View {
                     .frame(width: 60, height: 60)
                 
                 Image(systemName: iconName)
-                    .font(.system(size: 28, weight: .bold))
+                    .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.white)
             }
             
@@ -405,7 +423,7 @@ class CameraManager: NSObject, ObservableObject {
     
     func classifyImage(_ image: UIImage, completion: @escaping (ClassificationResult) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
-            guard let model = try? WasteClassifier(configuration: MLModelConfiguration()) else {
+            guard let model = try? LittrackClasification(configuration: MLModelConfiguration()) else {
                 print("Failed to load CoreML model")
                 self.fallbackClassification(image: image, completion: completion)
                 return
@@ -421,7 +439,7 @@ class CameraManager: NSObject, ObservableObject {
                 let prediction = try model.prediction(image: pixelBuffer)
                 
                 // Get the top prediction
-                let sortedPredictions = prediction.classLabelProbs.sorted { $0.value > $1.value }
+                let sortedPredictions = prediction.targetProbability.sorted { $0.value > $1.value }
                 let topPrediction = sortedPredictions.first
                 
                 let type = topPrediction?.key ?? "Unknown"
@@ -446,7 +464,11 @@ class CameraManager: NSObject, ObservableObject {
     
     private func fallbackClassification(image: UIImage, completion: @escaping (ClassificationResult) -> Void) {
         // Fallback to simulated classification if CoreML fails
-        let types = ["Plastic", "Can", "Glass"]
+        let types = [
+            "Paper", "Cardboard", "Biological", "Metal", "Plastic",
+            "Green-glass", "Brown-glass", "White-glass", "Clothes",
+            "Shoes", "Batteries", "Trash"
+        ]
         let randomType = types.randomElement() ?? "Plastic"
         let confidence = Double.random(in: 0.85...0.98)
         

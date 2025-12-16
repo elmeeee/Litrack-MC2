@@ -25,7 +25,7 @@ struct MainTabView: View {
                 HistoryView()
                     .tag(1)
                 
-                AnalyticsView()
+                MiniGameView()
                     .tag(2)
                 
                 SettingsView()
@@ -36,8 +36,7 @@ struct MainTabView: View {
             
             // Custom Tab Bar
             CustomTabBar(selectedTab: $selectedTab)
-                .padding(.horizontal, 20)
-                .padding(.bottom, 10)
+                .padding(.bottom, 0)
                 .ignoresSafeArea(.keyboard)
         }
         .fullScreenCover(isPresented: $appState.showCamera) {
@@ -46,6 +45,7 @@ struct MainTabView: View {
         .preferredColorScheme(.dark)
     }
 }
+
 
 #Preview {
     MainTabView()
