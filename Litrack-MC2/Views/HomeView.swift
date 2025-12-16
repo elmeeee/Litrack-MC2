@@ -224,7 +224,7 @@ struct WeeklyProgressView: View {
                             // Filled bar
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.green)
-                                .frame(height: CGFloat(data.count) / CGFloat(maxCount) * 100)
+                                .frame(height: max(0, CGFloat(data.count) / CGFloat(max(1, maxCount)) * 100))
                         }
                         
                         Text(data.day)
