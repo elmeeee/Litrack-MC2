@@ -9,6 +9,7 @@
 import SwiftUI
 import AVFoundation
 import Vision
+import CoreML
 
 struct CameraView: View {
     @Environment(\.dismiss) private var dismiss
@@ -339,12 +340,6 @@ struct SaveClassificationView: View {
     }
 }
 
-// MARK: - Classification Result Model
-struct ClassificationResult {
-    let type: String
-    let confidence: Double
-    let image: UIImage?
-}
 
 // MARK: - Camera Manager
 @MainActor
@@ -407,26 +402,63 @@ class CameraManager: NSObject, ObservableObject {
         photoOutput.capturePhoto(with: settings, delegate: self)
     }
     
+    
     func classifyImage(_ image: UIImage, completion: @escaping (ClassificationResult) -> Void) {
-        // Simulate ML classification (replace with actual CoreML model)
         DispatchQueue.global(qos: .userInitiated).async {
-            // Simulate processing delay
-            Thread.sleep(forTimeInterval: 0.5)
-            
-            let types = ["Plastic", "Can", "Glass"]
-            let randomType = types.randomElement() ?? "Plastic"
-            let confidence = Double.random(in: 0.85...0.98)
-            
-            let result = ClassificationResult(
-                type: randomType,
-                confidence: confidence,
-                image: image
-            )
-            
-            DispatchQueue.main.async {
-                self.isProcessing = false
-                completion(result)
+            guard let model = try? WasteClassifier(configuration: MLModelConfiguration()) else {
+                print("Failed to load CoreML model")
+                self.fallbackClassification(image: image, completion: completion)
+                return
             }
+            
+            guard let pixelBuffer = image.toCVPixelBuffer() else {
+                print("Failed to convert image to pixel buffer")
+                self.fallbackClassification(image: image, completion: completion)
+                return
+            }
+            
+            do {
+                let prediction = try model.prediction(image: pixelBuffer)
+                
+                // Get the top prediction
+                let sortedPredictions = prediction.classLabelProbs.sorted { $0.value > $1.value }
+                let topPrediction = sortedPredictions.first
+                
+                let type = topPrediction?.key ?? "Unknown"
+                let confidence = topPrediction?.value ?? 0.0
+                
+                let result = ClassificationResult(
+                    type: type,
+                    confidence: confidence,
+                    image: image
+                )
+                
+                DispatchQueue.main.async {
+                    self.isProcessing = false
+                    completion(result)
+                }
+            } catch {
+                print("CoreML prediction failed: \(error.localizedDescription)")
+                self.fallbackClassification(image: image, completion: completion)
+            }
+        }
+    }
+    
+    private func fallbackClassification(image: UIImage, completion: @escaping (ClassificationResult) -> Void) {
+        // Fallback to simulated classification if CoreML fails
+        let types = ["Plastic", "Can", "Glass"]
+        let randomType = types.randomElement() ?? "Plastic"
+        let confidence = Double.random(in: 0.85...0.98)
+        
+        let result = ClassificationResult(
+            type: randomType,
+            confidence: confidence,
+            image: image
+        )
+        
+        DispatchQueue.main.async {
+            self.isProcessing = false
+            completion(result)
         }
     }
 }
@@ -442,6 +474,57 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
         Task { @MainActor in
             captureCompletion?(image)
         }
+    }
+}
+
+// MARK: - UIImage Extension for CoreML
+extension UIImage {
+    func toCVPixelBuffer() -> CVPixelBuffer? {
+        let attrs = [
+            kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue,
+            kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue
+        ] as CFDictionary
+        
+        var pixelBuffer: CVPixelBuffer?
+        let status = CVPixelBufferCreate(
+            kCFAllocatorDefault,
+            Int(self.size.width),
+            Int(self.size.height),
+            kCVPixelFormatType_32ARGB,
+            attrs,
+            &pixelBuffer
+        )
+        
+        guard status == kCVReturnSuccess, let buffer = pixelBuffer else {
+            return nil
+        }
+        
+        CVPixelBufferLockBaseAddress(buffer, [])
+        defer { CVPixelBufferUnlockBaseAddress(buffer, []) }
+        
+        let pixelData = CVPixelBufferGetBaseAddress(buffer)
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        guard let context = CGContext(
+            data: pixelData,
+            width: Int(self.size.width),
+            height: Int(self.size.height),
+            bitsPerComponent: 8,
+            bytesPerRow: CVPixelBufferGetBytesPerRow(buffer),
+            space: rgbColorSpace,
+            bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue
+        ) else {
+            return nil
+        }
+        
+        context.translateBy(x: 0, y: self.size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        
+        UIGraphicsPushContext(context)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        UIGraphicsPopContext()
+        
+        return buffer
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SettingsView: View {
     @EnvironmentObject var appState: AppState

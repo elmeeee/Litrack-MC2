@@ -12,10 +12,10 @@ import Foundation
 class DataController: ObservableObject {
     static let shared = DataController()
     
-    let container: NSPersistentCloudKitContainer
+    let container: NSPersistentContainer
     
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Litrack_MC2")
+        container = NSPersistentContainer(name: "Litrack_MC2")
         
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
