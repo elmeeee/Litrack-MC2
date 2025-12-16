@@ -27,42 +27,54 @@ struct AnalyticsView: View {
     }
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 24) {
-                // Header
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Analytics")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
-                        .foregroundColor(.white)
-                    
-                    Text("Track your environmental impact")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.white.opacity(0.7))
+        NavigationStack {
+            ZStack {
+                // Background Gradient
+                LinearGradient(
+                    colors: [
+                        Color(hex: "0F2027"),
+                        Color(hex: "203A43"),
+                        Color(hex: "2C5364")
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+                
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 24) {
+                        // Subtitle
+                        Text("Track your environmental impact")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.white.opacity(0.7))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.top, 10)
+                        
+                        // Period Selector
+                        PeriodSelector(selectedPeriod: $selectedPeriod)
+                        
+                        // Type Distribution Chart
+                        TypeDistributionChart(entries: filteredEntries)
+                            .opacity(animateCharts ? 1 : 0)
+                            .offset(y: animateCharts ? 0 : 20)
+                        
+                        // Timeline Chart
+                        TimelineChart(entries: filteredEntries, period: selectedPeriod)
+                            .opacity(animateCharts ? 1 : 0)
+                            .offset(y: animateCharts ? 0 : 20)
+                        
+                        // Statistics Grid
+                        StatisticsGrid(entries: filteredEntries)
+                            .opacity(animateCharts ? 1 : 0)
+                            .offset(y: animateCharts ? 0 : 20)
+                        
+                        Spacer(minLength: 100)
+                    }
+                    .padding(.horizontal, 20)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 60)
-                
-                // Period Selector
-                PeriodSelector(selectedPeriod: $selectedPeriod)
-                
-                // Type Distribution Chart
-                TypeDistributionChart(entries: filteredEntries)
-                    .opacity(animateCharts ? 1 : 0)
-                    .offset(y: animateCharts ? 0 : 20)
-                
-                // Timeline Chart
-                TimelineChart(entries: filteredEntries, period: selectedPeriod)
-                    .opacity(animateCharts ? 1 : 0)
-                    .offset(y: animateCharts ? 0 : 20)
-                
-                // Statistics Grid
-                StatisticsGrid(entries: filteredEntries)
-                    .opacity(animateCharts ? 1 : 0)
-                    .offset(y: animateCharts ? 0 : 20)
-                
-                Spacer(minLength: 100)
             }
-            .padding(.horizontal, 20)
+            .navigationTitle("Analytics")
+            .toolbarColorScheme(.dark, for: .navigationBar)
         }
         .onAppear {
             withAnimation(.easeOut(duration: 0.6).delay(0.2)) {

@@ -14,17 +14,8 @@ struct MainTabView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            // Background Gradient
-            LinearGradient(
-                colors: [
-                    Color(hex: "0F2027"),
-                    Color(hex: "203A43"),
-                    Color(hex: "2C5364")
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            // Background removed - handled in individual views
+
             
             // Tab Content
             TabView(selection: $selectedTab) {
@@ -51,6 +42,7 @@ struct MainTabView: View {
         .fullScreenCover(isPresented: $appState.showCamera) {
             CameraView()
         }
+        .preferredColorScheme(.dark)
     }
 }
 

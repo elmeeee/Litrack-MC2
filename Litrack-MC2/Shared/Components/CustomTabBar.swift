@@ -81,12 +81,17 @@ struct CustomTabBar: View {
         .padding(.vertical, 12)
         .padding(.horizontal, 16)
         .background(
-            RoundedRectangle(cornerRadius: 30)
-                .fill(.ultraThinMaterial)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
-                )
+            ZStack {
+                RoundedRectangle(cornerRadius: 30)
+                    .fill(.thickMaterial)
+                
+                RoundedRectangle(cornerRadius: 30)
+                    .fill(Color(hex: "0F2027").opacity(0.8))
+            }
+            .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(Color.white.opacity(0.2), lineWidth: 1)
+            )
         )
         .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 10)
     }

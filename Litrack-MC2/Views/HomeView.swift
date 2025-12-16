@@ -19,29 +19,50 @@ struct HomeView: View {
     @State private var animateStats = false
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 24) {
-                // Header
-                HeaderView()
-                    .padding(.top, 60)
+        NavigationStack {
+            ZStack {
+                // Background Gradient
+                LinearGradient(
+                    colors: [
+                        Color(hex: "0F2027"),
+                        Color(hex: "203A43"),
+                        Color(hex: "2C5364")
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
                 
-                // Quick Stats Cards
-                QuickStatsView(entries: Array(wasteEntries))
-                    .scaleEffect(animateStats ? 1 : 0.8)
-                    .opacity(animateStats ? 1 : 0)
-                
-                // Weekly Progress
-                WeeklyProgressView(entries: Array(wasteEntries))
-                
-                // Recent Activity
-                RecentActivityView(entries: Array(wasteEntries.prefix(5)))
-                
-                // Environmental Impact
-                EnvironmentalImpactView(entries: Array(wasteEntries))
-                
-                Spacer(minLength: 100)
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 24) {
+                        // Welcome Text
+                        Text("Welcome Back!")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(.white.opacity(0.8))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.top, 10)
+                        
+                        // Quick Stats Cards
+                        QuickStatsView(entries: Array(wasteEntries))
+                            .scaleEffect(animateStats ? 1 : 0.8)
+                            .opacity(animateStats ? 1 : 0)
+                        
+                        // Weekly Progress
+                        WeeklyProgressView(entries: Array(wasteEntries))
+                        
+                        // Recent Activity
+                        RecentActivityView(entries: Array(wasteEntries.prefix(5)))
+                        
+                        // Environmental Impact
+                        EnvironmentalImpactView(entries: Array(wasteEntries))
+                        
+                        Spacer(minLength: 100)
+                    }
+                    .padding(.horizontal, 20)
+                }
             }
-            .padding(.horizontal, 20)
+            .navigationTitle("Track Your Impact")
+            .toolbarColorScheme(.dark, for: .navigationBar)
         }
         .onAppear {
             withAnimation(.spring(response: 0.6, dampingFraction: 0.7).delay(0.2)) {
@@ -51,21 +72,6 @@ struct HomeView: View {
     }
 }
 
-// MARK: - Header View
-struct HeaderView: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Welcome Back!")
-                .font(.system(size: 16, weight: .medium))
-                .foregroundColor(.white.opacity(0.8))
-            
-            Text("Track Your Impact")
-                .font(.system(size: 32, weight: .bold, design: .rounded))
-                .foregroundColor(.white)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-}
 
 // MARK: - Quick Stats View
 struct QuickStatsView: View {

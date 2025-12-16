@@ -16,20 +16,28 @@ struct SettingsView: View {
     @State private var showAbout = false
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 24) {
-                // Header
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Settings")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
-                        .foregroundColor(.white)
-                    
-                    Text("Customize your experience")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.white.opacity(0.7))
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 60)
+        NavigationStack {
+            ZStack {
+                // Background Gradient
+                LinearGradient(
+                    colors: [
+                        Color(hex: "0F2027"),
+                        Color(hex: "203A43"),
+                        Color(hex: "2C5364")
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+                
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 24) {
+                        // Subtitle
+                        Text("Customize your experience")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.white.opacity(0.7))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.top, 10)
                 
                 // Appearance Section
                 SettingsSection(title: "Appearance") {
@@ -133,16 +141,20 @@ struct SettingsView: View {
             }
             .padding(.horizontal, 20)
         }
-        .alert("Clear All Data", isPresented: $showClearDataAlert) {
-            Button("Cancel", role: .cancel) { }
-            Button("Delete", role: .destructive) {
-                clearAllData()
+    }
+            .navigationTitle("Settings")
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .alert("Clear All Data", isPresented: $showClearDataAlert) {
+                Button("Cancel", role: .cancel) { }
+                Button("Delete", role: .destructive) {
+                    clearAllData()
+                }
+            } message: {
+                Text("This will permanently delete all your tracked waste items. This action cannot be undone.")
             }
-        } message: {
-            Text("This will permanently delete all your tracked waste items. This action cannot be undone.")
-        }
-        .sheet(isPresented: $showAbout) {
-            AboutView()
+            .sheet(isPresented: $showAbout) {
+                AboutView()
+            }
         }
     }
     
