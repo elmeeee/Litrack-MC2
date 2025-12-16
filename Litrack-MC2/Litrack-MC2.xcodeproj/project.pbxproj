@@ -109,19 +109,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		678F267E52DC719E2285CC4D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				58DA90527750189758DD4CF9 /* Pods-Litrack-MC2.debug.xcconfig */,
-				B30C443B49991530735A64DC /* Pods-Litrack-MC2.release.xcconfig */,
-				29F08F2B8B94EE987D3A1536 /* Pods-Litrack-MC2-Litrack-MC2UITests.debug.xcconfig */,
-				2680297C27D5B6D12BA0E2B8 /* Pods-Litrack-MC2-Litrack-MC2UITests.release.xcconfig */,
-				4F17B7754A1405DC271E9EB7 /* Pods-Litrack-MC2Tests.debug.xcconfig */,
-				22EAA742B16D84A339E26948 /* Pods-Litrack-MC2Tests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		CBE7A08424744FD200868A22 = {
 			isa = PBXGroup;
 			children = (
@@ -129,7 +116,6 @@
 				CBE7A0A924744FD500868A22 /* Litrack-MC2Tests */,
 				CBE7A0B424744FD500868A22 /* Litrack-MC2UITests */,
 				CBE7A08E24744FD300868A22 /* Products */,
-				678F267E52DC719E2285CC4D /* Pods */,
 				1ADB58752453BA90C8422CAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
