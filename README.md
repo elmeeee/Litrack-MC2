@@ -154,13 +154,6 @@ Clean, modern UI built with UIKit, providing a seamless user experience for wast
 | **UIKit** | User interface components |
 | **Charts** | Data visualization and analytics |
 
-### Dependencies
-
-```ruby
-# CocoaPods Dependencies
-pod 'Charts'  # Beautiful chart visualizations
-```
-
 ---
 
 ## Installation
@@ -169,7 +162,6 @@ pod 'Charts'  # Beautiful chart visualizations
 
 - macOS with Xcode 11 or later
 - iOS 13.0+ deployment target
-- CocoaPods installed
 - Apple Developer account (for device testing)
 
 ### Setup Instructions
@@ -180,17 +172,12 @@ pod 'Charts'  # Beautiful chart visualizations
    cd Litrack-MC2
    ```
 
-2. **Install dependencies**
+2. **Open project**
    ```bash
-   pod install
+   open Litrack-MC2.xcodeproj
    ```
 
-3. **Open workspace**
-   ```bash
-   open Litrack-MC2.xcworkspace
-   ```
-
-4. **Build and Run**
+3. **Build and Run**
    - Select your target device or simulator
    - Press `Cmd + R` to build and run
 
@@ -220,21 +207,32 @@ pod 'Charts'  # Beautiful chart visualizations
 
 ```
 Litrack-MC2/
-├── Litrack-MC2/
+├── Litrack-MC2/                   # Main source code directory
 │   ├── AppDelegate.swift           # App lifecycle management
 │   ├── SceneDelegate.swift         # Scene configuration
-│   ├── ViewController.swift        # Main view controller
-│   ├── Camera/
-│   │   ├── CameraViewController.swift  # Camera & ML integration
-│   │   └── Camera.Screen.storyboard    # Camera UI
-│   ├── Assets.xcassets/           # App assets and images
-│   ├── Base.lproj/
-│   │   ├── Main.storyboard        # Main UI layout
+│   ├── LitrackApp.swift            # SwiftUI app entry point
+│   ├── DataController.swift        # CoreData stack management
+│   ├── Core/                       # Core app components
+│   │   └── App/                    # App-level configurations
+│   ├── Features/                   # Feature modules
+│   ├── Views/                      # SwiftUI views
+│   │   ├── ContentView.swift       # Main content view
+│   │   ├── HomeView.swift          # Home screen
+│   │   ├── HistoryView.swift       # History tracking
+│   │   └── SettingsView.swift      # App settings
+│   ├── Models/                     # Data models
+│   ├── Shared/                     # Shared utilities and components
+│   ├── Camera/                     # Camera & ML integration
+│   ├── Assets.xcassets/            # App assets and images
+│   ├── Base.lproj/                 # Localization resources
+│   │   ├── Main.storyboard         # Main UI layout
 │   │   └── LaunchScreen.storyboard # Launch screen
-│   └── Litrack_MC2.xcdatamodeld/  # CoreData model
-├── Pods/                          # CocoaPods dependencies
-├── Podfile                        # Dependency configuration
+│   └── Litrack_MC2.xcdatamodeld/   # CoreData model
+├── Litrack-MC2.xcodeproj/         # Xcode project file
+├── Litrack-MC2Tests/              # Unit tests
+├── Litrack-MC2UITests/            # UI tests
 ├── docs/                          # Documentation and diagrams
+├── .gitignore                     # Git ignore rules
 └── README.md                      # This file
 ```
 
@@ -289,7 +287,6 @@ Making a positive environmental impact:
 ### Development Environment
 - **macOS**: Catalina (10.15) or later
 - **Xcode**: 11.0 or later
-- **CocoaPods**: 1.9.0 or later
 - **Swift**: 5.0 or later
 
 ---
