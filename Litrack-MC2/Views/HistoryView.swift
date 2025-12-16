@@ -66,14 +66,13 @@ struct HistoryView: View {
                 )
                 .ignoresSafeArea()
                 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
-                        // Subtitle
+                VStack(spacing: 0) {
+                    // Header Section
+                    VStack(spacing: 16) {
                         Text("\(filteredEntries.count) items tracked")
                             .font(.system(size: 14, weight: .medium))
                             .foregroundColor(.white.opacity(0.7))
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.top, 10)
                         
                         // Search Bar
                         HStack {
@@ -84,12 +83,12 @@ struct HistoryView: View {
                                 .foregroundColor(.white)
                                 .tint(.green)
                         }
-                        .padding(16)
+                        .padding(12)
                         .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(.ultraThinMaterial)
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.white.opacity(0.1))
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 16)
+                                    RoundedRectangle(cornerRadius: 12)
                                         .stroke(Color.white.opacity(0.2), lineWidth: 1)
                                 )
                         )
@@ -102,37 +101,52 @@ struct HistoryView: View {
                                         title: filter.rawValue,
                                         isSelected: selectedFilter == filter
                                     ) {
-                                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                        withAnimation(.spring()) {
                                             selectedFilter = filter
                                         }
                                     }
                                 }
                             }
                         }
-                        
-                        // History List
-                        if filteredEntries.isEmpty {
-                            EmptyHistoryView()
-                                .padding(.top, 60)
-                        } else {
-                            LazyVStack(spacing: 12) {
-                                ForEach(filteredEntries, id: \.id) { entry in
-                                    HistoryCard(entry: entry)
-                                        .transition(.asymmetric(
-                                            insertion: .move(edge: .trailing).combined(with: .opacity),
-                                            removal: .move(edge: .leading).combined(with: .opacity)
-                                        ))
-                                }
+                    }
+                    .padding(20)
+                    .background(.ultraThinMaterial)
+                    
+                    // History List
+                    if filteredEntries.isEmpty {
+                        EmptyHistoryView()
+                            .padding(.top, 60)
+                        Spacer()
+                    } else {
+                        List {
+                            ForEach(filteredEntries, id: \.id) { entry in
+                                HistoryCard(entry: entry)
+                                    .listRowBackground(Color.clear)
+                                    .listRowSeparator(.hidden)
+                                    .listRowInsets(EdgeInsets(top: 8, leading: 20, bottom: 8, trailing: 20))
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                        Button(role: .destructive) {
+                                            deleteEntry(entry)
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                    }
                             }
                         }
-                        
-                        Spacer(minLength: 100)
+                        .listStyle(.plain)
+                        .scrollContentBackground(.hidden)
                     }
-                    .padding(.horizontal, 20)
                 }
                 .navigationTitle("History")
                 .toolbarColorScheme(.dark, for: .navigationBar)
             }
+        }
+    }
+    
+    private func deleteEntry(_ entry: WasteEntry) {
+        withAnimation {
+            viewContext.delete(entry)
+            try? viewContext.save()
         }
     }
     
@@ -205,6 +219,12 @@ struct HistoryView: View {
             }
         }
         
+        func loadImage(named: String) -> UIImage? {
+            guard let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+            let url = docDir.appendingPathComponent(named)
+            return UIImage(contentsOfFile: url.path)
+        }
+        
         var body: some View {
             Button {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
@@ -214,13 +234,23 @@ struct HistoryView: View {
                 VStack(spacing: 0) {
                     HStack(spacing: 16) {
                         ZStack {
-                            Circle()
-                                .fill(iconColor)
-                                .frame(width: 50, height: 50)
-                            
-                            Image(systemName: iconName)
-                                .font(.system(size: 22, weight: .semibold))
-                                .foregroundColor(entry.type == "Paper" || entry.type == "White-glass" ? .black : .white)
+                            if let imageName = entry.imageName,
+                               let image = loadImage(named: imageName) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(iconColor, lineWidth: 2))
+                            } else {
+                                Circle()
+                                    .fill(iconColor)
+                                    .frame(width: 60, height: 60)
+                                
+                                Image(systemName: iconName)
+                                    .font(.system(size: 24, weight: .semibold))
+                                    .foregroundColor(entry.type == "Paper" || entry.type == "White-glass" ? .black : .white)
+                            }
                         }
                         
                         VStack(alignment: .leading, spacing: 6) {

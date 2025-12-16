@@ -177,6 +177,8 @@ class CameraOverlayScene: SKScene {
     }
     
     private func setupScanner() {
+        guard size.width > 0 && size.height > 0 else { return }
+        
         let width = size.width
         let height = size.height
         
@@ -228,6 +230,7 @@ class CameraOverlayScene: SKScene {
     }
     
     private func setupParticles() {
+        guard size.width > 0 && size.height > 0 else { return }
         // Simple floating particles
         let particle = SKShapeNode(circleOfRadius: 2)
         particle.fillColor = .white.withAlphaComponent(0.6)
@@ -441,6 +444,10 @@ struct SaveClassificationView: View {
         entry.confidence = result.confidence
         entry.timestamp = Date()
         
+        if let filename = saveImageToDocuments(result.image) {
+            entry.imageName = filename
+        }
+        
         do {
             try viewContext.save()
             withAnimation {
@@ -453,6 +460,20 @@ struct SaveClassificationView: View {
             }
         } catch {
             print("Failed to save: \(error.localizedDescription)")
+        }
+    }
+    
+    private func saveImageToDocuments(_ image: UIImage) -> String? {
+        let filename = UUID().uuidString + ".jpg"
+        guard let data = image.jpegData(compressionQuality: 0.8),
+              let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let url = docDir.appendingPathComponent(filename)
+        do {
+            try data.write(to: url)
+            return filename
+        } catch {
+            print("Error saving image: \(error)")
+            return nil
         }
     }
 }
