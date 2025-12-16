@@ -78,6 +78,7 @@ struct CameraView: View {
                 
                 // Capture Button
                 Button {
+                    classificationResult = nil
                     cameraManager.capturePhoto { image in
                         classifyImage(image)
                     }
@@ -114,7 +115,11 @@ struct CameraView: View {
         .onAppear {
             cameraManager.checkPermissions()
         }
-        .sheet(isPresented: $showClassification) {
+        .sheet(isPresented: $showClassification, onDismiss: {
+            withAnimation {
+                classificationResult = nil
+            }
+        }) {
             if let result = classificationResult {
                 SaveClassificationView(result: result)
             }
