@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MiniGameView: View {
+    @AppStorage("miniGameHighScore") private var highScore = 0
     @State private var score = 0
-    @State private var timeRemaining = 30
+    @State private var timeRemaining: CGFloat = 30
+    @State private var maxTime: CGFloat = 30
     @State private var gameActive = false
     @State private var currentItem: WasteItem?
     @State private var options: [String] = []
@@ -17,8 +19,10 @@ struct MiniGameView: View {
     @State private var showGameOver = false
     @State private var feedbackColor: Color = .clear
     @State private var feedbackOpacity = 0.0
+    @State private var itemScale = 1.0
+    @State private var itemRotation = 0.0
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     let categories = [
         "Paper", "Cardboard", "Biological", "Metal", "Plastic",
@@ -26,7 +30,9 @@ struct MiniGameView: View {
         "Shoes", "Batteries", "Trash"
     ]
     
-    // Manual mapping of distinct icons for the game
+    // ... (Keep helper functions icon/color same, or assume they are there. I need to include them to be safe or rely on previous definition if I'm not replacing whole file.
+    // The instruction says "Replace the entire MiniGameView struct". So I must provide everything.)
+    
     func icon(for category: String) -> String {
         switch category {
         case "Paper": return "newspaper.fill"
@@ -85,16 +91,16 @@ struct MiniGameView: View {
                 .opacity(feedbackOpacity)
                 .ignoresSafeArea()
             
-            VStack {
+            VStack(spacing: 0) {
                 // Header
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Waste Sort Blitz")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.white)
-                        Text("Score: \(score)")
-                            .font(.system(size: 32, weight: .heavy, design: .rounded))
-                            .foregroundColor(.white)
+                        Text("Best: \(highScore)")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.white.opacity(0.7))
                     }
                     
                     Spacer()
@@ -103,6 +109,8 @@ struct MiniGameView: View {
                         HStack(spacing: 4) {
                             Image(systemName: "flame.fill")
                                 .foregroundColor(.orange)
+                                .scaleEffect(streak > 0 ? 1.2 : 1.0)
+                                .animation(.spring(), value: streak)
                             Text("\(streak)")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -111,12 +119,29 @@ struct MiniGameView: View {
                         .background(.ultraThinMaterial)
                         .cornerRadius(12)
                         
-                        Text("\(timeRemaining)s")
-                            .font(.system(size: 24, weight: .bold, design: .monospaced))
-                            .foregroundColor(timeRemaining <= 5 ? .red : .white)
+                        Text("Score: \(score)")
+                            .font(.system(size: 24, weight: .heavy, design: .rounded))
+                            .foregroundColor(.white)
                     }
                 }
                 .padding()
+                
+                // Timer Bar
+                GeometryReader { geometry in
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(Color.white.opacity(0.2))
+                            .frame(height: 8)
+                        
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(timeRemaining > 10 ? Color.green : (timeRemaining > 5 ? Color.orange : Color.red))
+                            .frame(width: geometry.size.width * (timeRemaining / maxTime), height: 8)
+                            .animation(.linear(duration: 0.1), value: timeRemaining)
+                    }
+                }
+                .frame(height: 8)
+                .padding(.horizontal)
+                .opacity(gameActive ? 1 : 0)
                 
                 Spacer()
                 
@@ -134,16 +159,23 @@ struct MiniGameView: View {
                                             endPoint: .bottomTrailing
                                         )
                                     )
-                                    .frame(width: 180, height: 180)
+                                    .frame(width: 200, height: 200)
                                     .shadow(color: item.colors[0].opacity(0.5), radius: 30, x: 0, y: 10)
+                                    .scaleEffect(itemScale)
                                 
                                 Image(systemName: item.icon)
-                                    .font(.system(size: 80))
+                                    .font(.system(size: 90))
                                     .foregroundColor(.white)
                                     .shadow(radius: 5)
+                                    .rotationEffect(.degrees(itemRotation))
+                                    .scaleEffect(itemScale)
                             }
-                            .transition(.scale.combined(with: .opacity))
-                            .id(item.category + "\(score)") // Force redraw for animation
+                            .id(item.category + "\(score)") // Force redraw
+                            .onAppear {
+                                withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+                                    itemScale = 1.0
+                                }
+                            }
                         }
                         
                         // Options Grid
@@ -156,7 +188,7 @@ struct MiniGameView: View {
                                         .font(.system(size: 18, weight: .bold))
                                         .foregroundColor(.white)
                                         .frame(maxWidth: .infinity)
-                                        .frame(height: 70)
+                                        .frame(height: 80)
                                         .background(
                                             RoundedRectangle(cornerRadius: 20)
                                                 .fill(.ultraThinMaterial)
@@ -173,40 +205,60 @@ struct MiniGameView: View {
                     }
                 } else {
                     // Start Screen
-                    VStack(spacing: 20) {
-                        Text(showGameOver ? "Game Over" : "Ready?")
-                            .font(.system(size: 40, weight: .black))
-                            .foregroundColor(.white)
+                    VStack(spacing: 30) {
+                        Spacer()
                         
-                        if showGameOver {
-                            Text("Final Score: \(score)")
-                                .font(.title)
+                        ZStack {
+                            Circle()
+                                .fill(LinearGradient(colors: [.blue, .purple], startPoint: .top, endPoint: .bottom))
+                                .frame(width: 150, height: 150)
+                                .blur(radius: 20)
+                                .opacity(0.6)
+                            
+                            Image(systemName: "gamecontroller.fill")
+                                .font(.system(size: 80))
+                                .foregroundColor(.white)
+                        }
+                        
+                        VStack(spacing: 12) {
+                            Text(showGameOver ? "Game Over" : "Ready to Sort?")
+                                .font(.system(size: 40, weight: .black, design: .rounded))
                                 .foregroundColor(.white)
                             
-                            Button {
-                                startGame()
-                            } label: {
-                                Text("Play Again")
-                                    .font(.title3.bold())
-                                    .foregroundColor(.black)
-                                    .padding(.horizontal, 40)
-                                    .padding(.vertical, 16)
-                                    .background(Color.white)
-                                    .cornerRadius(20)
-                            }
-                        } else {
-                            Button {
-                                startGame()
-                            } label: {
-                                Text("Start Game")
-                                    .font(.title3.bold())
-                                    .foregroundColor(.black)
-                                    .padding(.horizontal, 40)
-                                    .padding(.vertical, 16)
-                                    .background(Color.white)
-                                    .cornerRadius(20)
+                            if showGameOver {
+                                Text("Final Score: \(score)")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                                
+                                if score >= highScore && score > 0 {
+                                    Text("New High Score! 🎉")
+                                        .font(.headline)
+                                        .foregroundColor(.yellow)
+                                        .padding(.top, 4)
+                                }
+                            } else {
+                                Text("Test your recycling knowledge!")
+                                    .font(.subheadline)
+                                    .foregroundColor(.white.opacity(0.7))
                             }
                         }
+                        
+                        Button {
+                            startGame()
+                        } label: {
+                            HStack {
+                                Image(systemName: "play.fill")
+                                Text(showGameOver ? "Play Again" : "Start Game")
+                            }
+                            .font(.title3.bold())
+                            .foregroundColor(.black)
+                            .frame(width: 200, height: 60)
+                            .background(Color.white)
+                            .cornerRadius(30)
+                            .shadow(color: .white.opacity(0.3), radius: 20, x: 0, y: 10)
+                        }
+                        
+                        Spacer()
                     }
                 }
                 
@@ -216,7 +268,7 @@ struct MiniGameView: View {
         .onReceive(timer) { _ in
             if gameActive {
                 if timeRemaining > 0 {
-                    timeRemaining -= 1
+                    timeRemaining -= 0.1
                 } else {
                     gameOver()
                 }
@@ -230,12 +282,19 @@ struct MiniGameView: View {
         timeRemaining = 30
         gameActive = true
         showGameOver = false
+        itemScale = 0.5
         nextRound()
     }
     
     private func gameOver() {
         gameActive = false
         showGameOver = true
+        if score > highScore {
+            highScore = score
+        }
+        // Haptic
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
     }
     
     private func nextRound() {
@@ -248,6 +307,8 @@ struct MiniGameView: View {
         )
         
         currentItem = correctItem
+        itemScale = 0.0
+        itemRotation = -10.0
         
         // Generate options (1 correct + 3 wrong)
         var newOptions = [correctCategory]
@@ -257,6 +318,11 @@ struct MiniGameView: View {
             }
         }
         options = newOptions.shuffled()
+        
+        withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
+            itemScale = 1.0
+            itemRotation = 0.0
+        }
     }
     
     private func handleAnswer(_ answer: String) {
@@ -265,15 +331,24 @@ struct MiniGameView: View {
         if isCorrect {
             score += 10 + (streak * 2)
             streak += 1
+            // Bonus time
+            timeRemaining = min(timeRemaining + 1, maxTime)
+            
             triggerFeedback(color: .green)
             nextRound()
+            
+            // Haptic
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
         } else {
             streak = 0
             if timeRemaining > 2 {
                 timeRemaining -= 2 // Penalty
             }
             triggerFeedback(color: .red)
-            // Vibrate
+            // Shake effect logic would go here
+            
+            // Haptic
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
         }

@@ -61,6 +61,16 @@ struct HomeView: View {
                     .padding(.horizontal, 20)
                 }
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(destination: SettingsView()) {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(.white)
+                            .padding(8)
+                            .background(Circle().fill(.ultraThinMaterial))
+                    }
+                }
+            }
             .navigationTitle("Track Your Impact")
             .toolbarColorScheme(.dark, for: .navigationBar)
         }

@@ -21,9 +21,18 @@ struct HistoryView: View {
     
     enum FilterType: String, CaseIterable {
         case all = "All"
+        case paper = "Paper"
+        case cardboard = "Cardboard"
+        case biological = "Biological"
+        case metal = "Metal"
         case plastic = "Plastic"
-        case can = "Can"
-        case glass = "Glass"
+        case greenGlass = "Green-glass"
+        case brownGlass = "Brown-glass"
+        case whiteGlass = "White-glass"
+        case clothes = "Clothes"
+        case shoes = "Shoes"
+        case batteries = "Batteries"
+        case trash = "Trash"
     }
     
     var filteredEntries: [WasteEntry] {
@@ -162,18 +171,36 @@ struct HistoryView: View {
         
         var iconName: String {
             switch entry.type {
+            case "Paper": return "newspaper.fill"
+            case "Cardboard": return "box.truck.fill"
+            case "Biological": return "leaf.fill"
+            case "Metal": return "gear"
             case "Plastic": return "drop.fill"
-            case "Can": return "cylinder.fill"
-            case "Glass": return "wineglass.fill"
+            case "Green-glass": return "wineglass.fill"
+            case "Brown-glass": return "wineglass.fill"
+            case "White-glass": return "wineglass.fill"
+            case "Clothes": return "tshirt.fill"
+            case "Shoes": return "shoe.fill"
+            case "Batteries": return "battery.100.bolt"
+            case "Trash": return "trash.fill"
             default: return "cube.fill"
             }
         }
         
         var iconColor: Color {
             switch entry.type {
+            case "Paper": return .white
+            case "Cardboard": return Color(hex: "D2B48C")
+            case "Biological": return .green
+            case "Metal": return .gray
             case "Plastic": return .blue
-            case "Can": return .red
-            case "Glass": return .orange
+            case "Green-glass": return Color(hex: "56ab2f")
+            case "Brown-glass": return Color(hex: "8D6E63")
+            case "White-glass": return Color(hex: "E0F7FA")
+            case "Clothes": return .pink
+            case "Shoes": return .primary
+            case "Batteries": return .orange
+            case "Trash": return .secondary
             default: return .green
             }
         }
@@ -193,7 +220,7 @@ struct HistoryView: View {
                             
                             Image(systemName: iconName)
                                 .font(.system(size: 22, weight: .semibold))
-                                .foregroundColor(.white)
+                                .foregroundColor(entry.type == "Paper" || entry.type == "White-glass" ? .black : .white)
                         }
                         
                         VStack(alignment: .leading, spacing: 6) {
@@ -302,5 +329,5 @@ struct HistoryView: View {
             .padding(.vertical, 60)
         }
     }
-    
-}
+}    
+

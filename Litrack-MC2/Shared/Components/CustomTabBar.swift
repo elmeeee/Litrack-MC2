@@ -17,7 +17,7 @@ struct CustomTabBar: View {
         (tag: 0, icon: "house.fill", title: "Home"),
         (tag: 1, icon: "clock.fill", title: "History"),
         (tag: 2, icon: "gamecontroller.fill", title: "Game"),
-        (tag: 3, icon: "gearshape.fill", title: "Settings")
+        (tag: 3, icon: "chart.bar.fill", title: "Analytics")
     ]
     
     var body: some View {

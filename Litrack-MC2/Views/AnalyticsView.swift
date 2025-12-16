@@ -151,16 +151,29 @@ struct TypeDistributionChart: View {
     let entries: [WasteEntry]
     
     var typeData: [(type: String, count: Int, color: [Color])] {
-        let types = ["Plastic", "Can", "Glass"]
-        let colors: [[Color]] = [
-            [.blue, .blue],
-            [.red, .red],
-            [.orange, .orange]
-        ]
+        let grouped = Dictionary(grouping: entries, by: { $0.type ?? "Unknown" })
+        let sorted = grouped.sorted { $0.value.count > $1.value.count }
         
-        return types.enumerated().map { index, type in
-            let count = entries.filter { $0.type == type }.count
-            return (type, count, colors[index])
+        return sorted.prefix(6).map { type, entries in
+            (type: type, count: entries.count, color: color(for: type))
+        }
+    }
+    
+    func color(for type: String) -> [Color] {
+        switch type {
+        case "Paper": return [Color.white, Color.gray]
+        case "Cardboard": return [Color(hex: "D2B48C"), Color(hex: "A0522D")]
+        case "Biological": return [Color(hex: "11998e"), Color(hex: "38ef7d")]
+        case "Metal": return [Color(hex: "bdc3c7"), Color(hex: "2c3e50")]
+        case "Plastic": return [Color(hex: "667eea"), Color(hex: "764ba2")]
+        case "Green-glass": return [Color(hex: "56ab2f"), Color(hex: "a8e063")]
+        case "Brown-glass": return [Color(hex: "8D6E63"), Color(hex: "5D4037")]
+        case "White-glass": return [Color(hex: "E0F7FA"), Color(hex: "B2EBF2")]
+        case "Clothes": return [Color(hex: "ff9a9e"), Color(hex: "fecfef")]
+        case "Shoes": return [Color(hex: "29323c"), Color(hex: "485563")]
+        case "Batteries": return [Color(hex: "ff6a00"), Color(hex: "ee0979")]
+        case "Trash": return [Color(hex: "304352"), Color(hex: "d7d2cc")]
+        default: return [Color(hex: "11998e"), Color(hex: "38ef7d")]
         }
     }
     

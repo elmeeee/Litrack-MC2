@@ -28,7 +28,7 @@ struct MainTabView: View {
                 MiniGameView()
                     .tag(2)
                 
-                SettingsView()
+                AnalyticsView()
                     .tag(3)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
