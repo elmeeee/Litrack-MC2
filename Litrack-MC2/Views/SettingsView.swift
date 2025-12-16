@@ -46,7 +46,7 @@ struct SettingsView: View {
                         title: "Dark Mode",
                         subtitle: "Use dark theme",
                         isOn: $appState.isDarkMode,
-                        iconColor: [Color(hex: "667eea"), Color(hex: "764ba2")]
+                        iconColor: .indigo
                     )
                 }
                 
@@ -56,7 +56,7 @@ struct SettingsView: View {
                         icon: "arrow.clockwise",
                         title: "Sync Data",
                         subtitle: "Sync with iCloud",
-                        iconColor: [Color(hex: "11998e"), Color(hex: "38ef7d")]
+                        iconColor: .blue
                     ) {
                         // Sync action
                     }
@@ -65,7 +65,7 @@ struct SettingsView: View {
                         icon: "square.and.arrow.down",
                         title: "Export Data",
                         subtitle: "Download your data",
-                        iconColor: [Color(hex: "4facfe"), Color(hex: "00f2fe")]
+                        iconColor: .teal
                     ) {
                         // Export action
                     }
@@ -74,7 +74,7 @@ struct SettingsView: View {
                         icon: "trash.fill",
                         title: "Clear All Data",
                         subtitle: "Delete all tracked items",
-                        iconColor: [Color(hex: "f093fb"), Color(hex: "f5576c")]
+                        iconColor: .red
                     ) {
                         showClearDataAlert = true
                     }
@@ -86,7 +86,7 @@ struct SettingsView: View {
                         icon: "info.circle.fill",
                         title: "About Litrack",
                         subtitle: "Version 2.0.0",
-                        iconColor: [Color(hex: "fa709a"), Color(hex: "fee140")]
+                        iconColor: .orange
                     ) {
                         showAbout = true
                     }
@@ -95,7 +95,7 @@ struct SettingsView: View {
                         icon: "star.fill",
                         title: "Rate App",
                         subtitle: "Share your feedback",
-                        iconColor: [Color(hex: "ffd89b"), Color(hex: "19547b")]
+                        iconColor: .yellow
                     ) {
                         // Rate action
                     }
@@ -104,7 +104,7 @@ struct SettingsView: View {
                         icon: "envelope.fill",
                         title: "Contact Us",
                         subtitle: "Get in touch",
-                        iconColor: [Color(hex: "a8edea"), Color(hex: "fed6e3")]
+                        iconColor: .purple
                     ) {
                         // Contact action
                     }
@@ -114,13 +114,7 @@ struct SettingsView: View {
                 VStack(spacing: 8) {
                     Image(systemName: "leaf.fill")
                         .font(.system(size: 40, weight: .bold))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .foregroundStyle(Color.green)
                     
                     Text("Litrack")
                         .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -205,19 +199,13 @@ struct SettingsToggle: View {
     let title: String
     let subtitle: String
     @Binding var isOn: Bool
-    let iconColor: [Color]
+    let iconColor: Color
     
     var body: some View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: iconColor,
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(iconColor)
                     .frame(width: 44, height: 44)
                 
                 Image(systemName: icon)
@@ -249,7 +237,7 @@ struct SettingsButton: View {
     let icon: String
     let title: String
     let subtitle: String
-    let iconColor: [Color]
+    let iconColor: Color
     let action: () -> Void
     
     var body: some View {
@@ -257,13 +245,7 @@ struct SettingsButton: View {
             HStack(spacing: 16) {
                 ZStack {
                     Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: iconColor,
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .fill(iconColor)
                         .frame(width: 44, height: 44)
                     
                     Image(systemName: icon)
@@ -329,13 +311,7 @@ struct AboutView: View {
                     VStack(spacing: 16) {
                         ZStack {
                             Circle()
-                                .fill(
-                                    LinearGradient(
-                                        colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
+                                .fill(Color.green)
                                 .frame(width: 100, height: 100)
                                 .blur(radius: 20)
                             
@@ -437,13 +413,7 @@ struct FeatureRow: View {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .font(.system(size: 18, weight: .semibold))
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .foregroundStyle(Color.green)
                 .frame(width: 32)
             
             VStack(alignment: .leading, spacing: 2) {

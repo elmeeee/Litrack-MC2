@@ -101,14 +101,14 @@ struct QuickStatsView: View {
                     title: "Total Items",
                     value: "\(totalItems)",
                     icon: "cube.fill",
-                    gradient: [Color(hex: "667eea"), Color(hex: "764ba2")]
+                    color: .blue
                 )
                 
                 StatCard(
                     title: "This Week",
                     value: "\(thisWeekItems)",
                     icon: "calendar",
-                    gradient: [Color(hex: "f093fb"), Color(hex: "f5576c")]
+                    color: .orange
                 )
             }
             
@@ -117,14 +117,14 @@ struct QuickStatsView: View {
                     title: "Most Common",
                     value: mostCommonType,
                     icon: "star.fill",
-                    gradient: [Color(hex: "4facfe"), Color(hex: "00f2fe")]
+                    color: .teal
                 )
                 
                 StatCard(
                     title: "Streak",
                     value: "7 Days",
                     icon: "flame.fill",
-                    gradient: [Color(hex: "fa709a"), Color(hex: "fee140")]
+                    color: .yellow
                 )
             }
         }
@@ -136,20 +136,14 @@ struct StatCard: View {
     let title: String
     let value: String
     let icon: String
-    let gradient: [Color]
+    let color: Color
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Image(systemName: icon)
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: gradient,
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .foregroundStyle(color)
                 Spacer()
             }
             
@@ -170,17 +164,10 @@ struct StatCard: View {
                 .fill(.ultraThinMaterial)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(
-                            LinearGradient(
-                                colors: gradient.map { $0.opacity(0.5) },
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
+                        .stroke(color.opacity(0.5), lineWidth: 1)
                 )
         )
-        .shadow(color: gradient[0].opacity(0.3), radius: 10, x: 0, y: 5)
+        .shadow(color: color.opacity(0.1), radius: 10, x: 0, y: 5)
     }
 }
 
@@ -226,13 +213,7 @@ struct WeeklyProgressView: View {
                             
                             // Filled bar
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(
-                                    LinearGradient(
-                                        colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                                        startPoint: .bottom,
-                                        endPoint: .top
-                                    )
-                                )
+                                .fill(Color.green)
                                 .frame(height: CGFloat(data.count) / CGFloat(maxCount) * 100)
                         }
                         
@@ -302,12 +283,12 @@ struct ActivityRow: View {
         }
     }
     
-    var iconColor: [Color] {
+    var iconColor: Color {
         switch entry.type {
-        case "Plastic": return [Color(hex: "667eea"), Color(hex: "764ba2")]
-        case "Can": return [Color(hex: "f093fb"), Color(hex: "f5576c")]
-        case "Glass": return [Color(hex: "4facfe"), Color(hex: "00f2fe")]
-        default: return [Color(hex: "11998e"), Color(hex: "38ef7d")]
+        case "Plastic": return .blue
+        case "Can": return .red
+        case "Glass": return .orange
+        default: return .green
         }
     }
     
@@ -315,13 +296,7 @@ struct ActivityRow: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: iconColor,
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(iconColor)
                     .frame(width: 44, height: 44)
                 
                 Image(systemName: iconName)
@@ -344,7 +319,7 @@ struct ActivityRow: View {
             VStack(alignment: .trailing, spacing: 4) {
                 Text("\(Int(entry.confidence * 100))%")
                     .font(.system(size: 14, weight: .bold))
-                    .foregroundColor(Color(hex: "38ef7d"))
+                    .foregroundColor(.green)
                 
                 Text("Confidence")
                     .font(.system(size: 10, weight: .regular))
@@ -372,13 +347,7 @@ struct EnvironmentalImpactView: View {
             HStack {
                 Image(systemName: "leaf.fill")
                     .font(.system(size: 24, weight: .bold))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .foregroundStyle(Color.green)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Environmental Impact")
@@ -410,26 +379,10 @@ struct EnvironmentalImpactView: View {
         .padding(20)
         .background(
             RoundedRectangle(cornerRadius: 24)
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            Color(hex: "11998e").opacity(0.3),
-                            Color(hex: "38ef7d").opacity(0.1)
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .fill(.ultraThinMaterial)
                 .overlay(
                     RoundedRectangle(cornerRadius: 24)
-                        .stroke(
-                            LinearGradient(
-                                colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
+                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
                 )
         )
     }
@@ -445,7 +398,7 @@ struct ImpactCard: View {
         VStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(Color(hex: "38ef7d"))
+                .foregroundColor(.green)
             
             Text(value)
                 .font(.system(size: 20, weight: .bold, design: .rounded))

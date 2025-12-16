@@ -126,13 +126,7 @@ struct PeriodSelector: View {
                             ZStack {
                                 if selectedPeriod == period {
                                     RoundedRectangle(cornerRadius: 12)
-                                        .fill(
-                                            LinearGradient(
-                                                colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                                                startPoint: .leading,
-                                                endPoint: .trailing
-                                            )
-                                        )
+                                        .fill(Color.green)
                                         .matchedGeometryEffect(id: "period", in: animation)
                                 }
                             }
@@ -159,9 +153,9 @@ struct TypeDistributionChart: View {
     var typeData: [(type: String, count: Int, color: [Color])] {
         let types = ["Plastic", "Can", "Glass"]
         let colors: [[Color]] = [
-            [Color(hex: "667eea"), Color(hex: "764ba2")],
-            [Color(hex: "f093fb"), Color(hex: "f5576c")],
-            [Color(hex: "4facfe"), Color(hex: "00f2fe")]
+            [.blue, .blue],
+            [.red, .red],
+            [.orange, .orange]
         ]
         
         return types.enumerated().map { index, type in
@@ -287,8 +281,8 @@ struct TimelineChart: View {
                     .foregroundStyle(
                         LinearGradient(
                             colors: [
-                                Color(hex: "11998e").opacity(0.6),
-                                Color(hex: "38ef7d").opacity(0.2)
+                                Color.green.opacity(0.6),
+                                Color.green.opacity(0.2)
                             ],
                             startPoint: .top,
                             endPoint: .bottom
@@ -301,7 +295,7 @@ struct TimelineChart: View {
                     )
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
+                            colors: [Color.green, Color.green],
                             startPoint: .leading,
                             endPoint: .trailing
                         )
@@ -406,13 +400,7 @@ struct MiniStatCard: View {
         VStack(spacing: 12) {
             Image(systemName: icon)
                 .font(.system(size: 24, weight: .semibold))
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .foregroundStyle(Color.green)
             
             Text(value)
                 .font(.system(size: 20, weight: .bold, design: .rounded))

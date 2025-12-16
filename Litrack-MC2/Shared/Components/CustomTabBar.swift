@@ -23,32 +23,27 @@ struct CustomTabBar: View {
     var body: some View {
         HStack(spacing: 0) {
             ForEach(0..<tabs.count, id: \.self) { index in
+                // Add Camera Button before the 3rd tab (index 2)
                 if index == 2 {
-                    // Camera button in the middle
                     Button {
                         appState.showCamera = true
                     } label: {
                         ZStack {
                             Circle()
-                                .fill(
-                                    LinearGradient(
-                                        colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
+                                .fill(Color.white)
                                 .frame(width: 60, height: 60)
-                                .shadow(color: Color(hex: "11998e").opacity(0.5), radius: 10, x: 0, y: 5)
+                                .shadow(color: Color.white.opacity(0.2), radius: 10, x: 0, y: 5)
                             
                             Image(systemName: "camera.fill")
                                 .font(.system(size: 24, weight: .bold))
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                         }
                     }
                     .offset(y: -20)
                     .frame(maxWidth: .infinity)
                 }
                 
+                // Tab Button
                 Button {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                         selectedTab = index
@@ -57,15 +52,15 @@ struct CustomTabBar: View {
                     VStack(spacing: 4) {
                         Image(systemName: tabs[index].icon)
                             .font(.system(size: 20, weight: selectedTab == index ? .bold : .regular))
-                            .foregroundColor(selectedTab == index ? Color(hex: "38ef7d") : .white.opacity(0.6))
+                            .foregroundColor(selectedTab == index ? .white : .white.opacity(0.5))
                         
                         Text(tabs[index].title)
                             .font(.system(size: 10, weight: selectedTab == index ? .semibold : .regular))
-                            .foregroundColor(selectedTab == index ? Color(hex: "38ef7d") : .white.opacity(0.6))
+                            .foregroundColor(selectedTab == index ? .white : .white.opacity(0.5))
                         
                         if selectedTab == index {
                             Circle()
-                                .fill(Color(hex: "38ef7d"))
+                                .fill(Color.white)
                                 .frame(width: 4, height: 4)
                                 .matchedGeometryEffect(id: "tab", in: animation)
                         } else {
@@ -94,12 +89,7 @@ struct CustomTabBar: View {
             )
         )
         .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 10)
+        .ignoresSafeArea(.keyboard)
     }
 }
 
-#Preview {
-    CustomTabBar(selectedTab: .constant(0))
-        .environmentObject(AppState())
-        .padding()
-        .background(Color.black)
-}

@@ -26,7 +26,7 @@
 		360394192EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360393F52EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift */; };
 		3690976C2EF0FE1A00F74A6D /* WasteClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3690976B2EF0FE1900F74A6D /* WasteClassifier.mlmodel */; };
 		CBE7A09124744FD300868A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A09024744FD300868A22 /* AppDelegate.swift */; };
-		CBE7A09B24744FD300868A22 /* Litrack_MC2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A09924744FD300868A22 /* Litrack_MC2.xcdatamodeld */; };
+
 		CBE7A09D24744FD500868A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE7A09C24744FD500868A22 /* Assets.xcassets */; };
 		CBE7A0AB24744FD500868A22 /* Litrack_MC2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A0AA24744FD500868A22 /* Litrack_MC2Tests.swift */; };
 		CBE7A0B624744FD500868A22 /* Litrack_MC2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7A0B524744FD500868A22 /* Litrack_MC2UITests.swift */; };
@@ -213,7 +213,7 @@
 				CBE7A09024744FD300868A22 /* AppDelegate.swift */,
 				CBE7A09C24744FD500868A22 /* Assets.xcassets */,
 				CBE7A0A124744FD500868A22 /* Info.plist */,
-				CBE7A09924744FD300868A22 /* Litrack_MC2.xcdatamodeld */,
+
 				3690976B2EF0FE1900F74A6D /* WasteClassifier.mlmodel */,
 			);
 			path = "Litrack-MC2";
@@ -386,7 +386,7 @@
 				360394172EF0F97500225FE5 /* HomeView.swift in Sources */,
 				360394182EF0F97500225FE5 /* SplashView.swift in Sources */,
 				360394192EF0F97500225FE5 /* WasteEntry+CoreDataClass.swift in Sources */,
-				CBE7A09B24744FD300868A22 /* Litrack_MC2.xcdatamodeld in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,16 +708,7 @@
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
-		CBE7A09924744FD300868A22 /* Litrack_MC2.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CBE7A09A24744FD300868A22 /* Litrack_MC2.xcdatamodel */,
-			);
-			currentVersion = CBE7A09A24744FD300868A22 /* Litrack_MC2.xcdatamodel */;
-			path = Litrack_MC2.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
+
 /* End XCVersionGroup section */
 	};
 	rootObject = CBE7A08524744FD300868A22 /* Project object */;

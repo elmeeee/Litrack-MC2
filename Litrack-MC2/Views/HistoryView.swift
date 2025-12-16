@@ -73,7 +73,7 @@ struct HistoryView: View {
                             
                             TextField("Search...", text: $searchText)
                                 .foregroundColor(.white)
-                                .tint(Color(hex: "38ef7d"))
+                                .tint(.green)
                         }
                         .padding(16)
                         .background(
@@ -142,19 +142,7 @@ struct HistoryView: View {
                     .padding(.vertical, 10)
                     .background(
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(
-                                isSelected ?
-                                LinearGradient(
-                                    colors: [Color(hex: "11998e"), Color(hex: "38ef7d")],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                ) :
-                                    LinearGradient(
-                                        colors: [Color.white.opacity(0.1), Color.white.opacity(0.1)],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                            )
+                            .fill(isSelected ? Color.green : Color.white.opacity(0.1))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(
@@ -181,12 +169,12 @@ struct HistoryView: View {
             }
         }
         
-        var iconColor: [Color] {
+        var iconColor: Color {
             switch entry.type {
-            case "Plastic": return [Color(hex: "667eea"), Color(hex: "764ba2")]
-            case "Can": return [Color(hex: "f093fb"), Color(hex: "f5576c")]
-            case "Glass": return [Color(hex: "4facfe"), Color(hex: "00f2fe")]
-            default: return [Color(hex: "11998e"), Color(hex: "38ef7d")]
+            case "Plastic": return .blue
+            case "Can": return .red
+            case "Glass": return .orange
+            default: return .green
             }
         }
         
@@ -200,13 +188,7 @@ struct HistoryView: View {
                     HStack(spacing: 16) {
                         ZStack {
                             Circle()
-                                .fill(
-                                    LinearGradient(
-                                        colors: iconColor,
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
+                                .fill(iconColor)
                                 .frame(width: 50, height: 50)
                             
                             Image(systemName: iconName)
@@ -229,7 +211,7 @@ struct HistoryView: View {
                         VStack(alignment: .trailing, spacing: 6) {
                             Text("\(Int(entry.confidence * 100))%")
                                 .font(.system(size: 16, weight: .bold))
-                                .foregroundColor(Color(hex: "38ef7d"))
+                                .foregroundColor(.green)
                             
                             Image(systemName: showDetails ? "chevron.up" : "chevron.down")
                                 .font(.system(size: 12, weight: .semibold))
@@ -267,14 +249,7 @@ struct HistoryView: View {
                         .fill(.ultraThinMaterial)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(
-                                    LinearGradient(
-                                        colors: iconColor.map { $0.opacity(0.3) },
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    ),
-                                    lineWidth: 1
-                                )
+                                .stroke(iconColor.opacity(0.5), lineWidth: 1)
                         )
                 )
             }
