@@ -41,6 +41,7 @@ struct MainTabView: View {
                     .tag(3)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
+            .ignoresSafeArea()
             
             // Custom Tab Bar
             CustomTabBar(selectedTab: $selectedTab)
